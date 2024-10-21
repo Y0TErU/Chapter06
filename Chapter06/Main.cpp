@@ -7,6 +7,7 @@ public:
 	int m_value;
 
 	Integer();
+	Integer(int num);
 	void Show();
 };
 
@@ -14,6 +15,11 @@ public:
 Integer::Integer()
 {
 	m_value = 0;
+}
+
+Integer::Integer(int num)
+{
+	m_value = num;
 }
 
 //ƒƒ“ƒo•Ï”‚Ì•\¦
@@ -24,7 +30,8 @@ void Integer::Show()
 
 int main()
 {
-	Integer a, b, c;
+	Integer a;
+	Integer b(100),c(40);
 
 	a.Show();
 	b.Show();
