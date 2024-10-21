@@ -1,40 +1,47 @@
 #include<iostream>
+#include<cstdlib>
 using namespace std;
 
-const int MAX_NAME = 16;
+const int INT_ARRAY_SIZE = 100;
 
-class Student
+class IntArray
 {
 public:
-	char name[MAX_NAME + 1];
-	int scoreJapanese;
-	int scoreMath;
-	int scoreEnglish;
+	IntArray();						//コンストラクタ
 
-	void Show();
-
+public:
+	int Get(int i);					//メンバへのアクセス関数(取得)
+	void Set(int i, int value);		//メンバへのアクセス関数(変更)
+private:
+	void CheckIndex(int i);			//インデックスのチェック
+private:
+	int m_array[INT_ARRAY_SIZE];	//メンバ変数は基本的にprivateにする
 };
 
-void Student::Show()
+//メンバへのアクセス関数
+int IntArray::Get(int i)
 {
-	cout << "名前 : " << name << endl
-		<< "国語 : " << scoreJapanese << endl
-		<< "数学 : " << scoreMath << endl
-		<< "英語 : " << scoreEnglish << endl;
+	CheckIndex(i);
+	return m_array[i];
 }
 
-int main()
+void IntArray::Set(int i, int value)
 {
-	Student student[] =
-	{
-		{"赤井望", 73,98,86,},
-		{"笠井大輔",64,45,40,},
-		{"吉田香苗",76,78,69,},
-	};
-	int size = sizeof student / sizeof * student;
+	CheckIndex(i);
+	m_array[i] = value;
+}
 
-	for (int i = 0; i < size; i++)
+//インデックスのチェック
+void IntArray::CheckIndex(int i)
+{
+	if (0 <= i && i < INT_ARRAY_SIZE)
 	{
-		student[i].Show();
+		//インデックスは正常です
+	}
+	else
+	{
+		cout << "インデックスが不正です！" << endl
+			<< "値 : " << i << endl;
+		exit(EXIT_FAILURE);
 	}
 }
