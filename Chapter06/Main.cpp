@@ -1,40 +1,33 @@
 #include<iostream>
 using namespace std;
 
-const int MAX_NAME = 16;
-
-class Student
+class Integer
 {
 public:
-	char name[MAX_NAME + 1];
-	int scoreJapanese;
-	int scoreMath;
-	int scoreEnglish;
+	int m_value;
 
+	Integer();
 	void Show();
-
 };
 
-void Student::Show()
+//コンストラクタ
+Integer::Integer()
 {
-	cout << "名前 : " << name << endl
-		<< "国語 : " << scoreJapanese << endl
-		<< "数学 : " << scoreMath << endl
-		<< "英語 : " << scoreEnglish << endl;
+	m_value = 0;
+}
+
+//メンバ変数の表示
+void Integer::Show()
+{
+	cout << m_value << endl;
 }
 
 int main()
 {
-	Student student[] =
-	{
-		{"赤井望", 73,98,86,},
-		{"笠井大輔",64,45,40,},
-		{"吉田香苗",76,78,69,},
-	};
-	int size = sizeof student / sizeof * student;
+	Integer a, b, c;
 
-	for (int i = 0; i < size; i++)
-	{
-		student[i].Show();
-	}
+	a.Show();
+	b.Show();
+	c.Show();
+
 }
